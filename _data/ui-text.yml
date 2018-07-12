@@ -27,7 +27,7 @@ en: &DEFAULT_EN
   powered_by                 : "Powered by"
   website_label              : "Website"
   email_label                : "Email"
-  recent_posts               : "Recent Posts"
+  recent_posts               : "Coming Soon"
   undefined_wpm              : "Undefined parameter words_per_minute at _config.yml"
   comment_form_info          : "Your email address will not be published. Required fields are marked"
   comment_form_comment_label : "Comment"
@@ -116,7 +116,6 @@ fr: &DEFAULT_FR
   categories_label           : "Catégories :"
   date_label                 : "Mis à jour :"
   comments_label             : "Laisser un commentaire"
-  comments_title             :
   more_label                 : "Lire plus"
   related_label              : "Vous pourriez aimer aussi"
   follow_label               : "Contact"
