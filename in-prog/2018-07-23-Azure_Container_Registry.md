@@ -43,7 +43,7 @@ location="WestUS"
 az group create --location $location --name <YourResourceGroupName>
 ```
 
-`--location` - The region this resource group will reside in. (I've used `WestUs` here but you can set this to anything you prefer)
+`--location` - The region this resource group will reside in.
 
 `--name` - The name of your resource group.
 
