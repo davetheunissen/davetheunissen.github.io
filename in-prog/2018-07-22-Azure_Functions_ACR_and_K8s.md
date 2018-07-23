@@ -2,7 +2,7 @@
 layout: post
 title: "Azure Functions with Kubernetes - Part 1"
 excerpt: "Learn how to publish an azure function docker image to ACR and then deploy that function to a Kubernetes cluster"
-tags: [kubernetes, docker, functions, azure]
+tags: [kubernetes, docker, containers, functions, azure]
 share: true
 ---
 
@@ -54,12 +54,22 @@ Run `func new --name YourFunctionName` and select `HttpTrigger` from the list of
 
 Inspect the files that have been created. You will see a .cs file with your functions name. The function that has been created is a simple http function that takes a name as a query string and returns that text in a response.
 
-**Build and run your function!**
+### Step 4 - Build and run your function
 
-To run the function run `func start --build`
+To build and execute your function run `func start --build`
 
-![Alt Text](func_start.gif)
+![Alt Text](../media/2018-07-22/func_start.gif)
 
-Clicking on the link will open the function url in your browser. Add a query string parameter for your name and send the request. You should see a response similar to below.
+Open the function url in your browser. Add a query string parameter for your name and send the request. You should see a response similar to below.
 
-![Alt Text](func_run_chrome.png)
+![Alt Text](../media/2018-07-22/func_run_chrome.png)
+
+### Step 5 - Create a Docker Image
+
+Start off by building a Docker image that includes your function and the Azure Functions runtime. The Docker file that was created at the beginning will pull down the functions runtime.
+
+To build the docker image run `docker build -t my-az-fnc-docker-img .` (Don't miss the period at the end of the command.)
+
+![Alt Text](../media/2018-07-22/func_docker_build.gif)
+
+### Step 6 - Publish your Docker image to Azure Container Registry
