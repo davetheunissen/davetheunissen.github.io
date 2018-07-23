@@ -22,7 +22,7 @@ This post uses the [Azure Cloud Shell](https://shell.azure.com/) which already h
 
 If you are not that comfortable with the command line, the [Azure Portal](https://portal.azure.com) provides a rich user experience that is a really great tool for quickly setting up Azure resources however this post won't be covering the portal.
 
-### Provision Azure Container Registry
+## Part 1 - Provision an Azure Container Registry
 
 To get started, go ahead and launch the Azure Cloud Shell.
 
@@ -65,4 +65,4 @@ Running the following will output details of your new ACR instance and thats it 
 az acr list
 ```
 
-### Part 2 - Publish Docker Image to ACR
+## Part 2 - Publish Docker Image to ACR
