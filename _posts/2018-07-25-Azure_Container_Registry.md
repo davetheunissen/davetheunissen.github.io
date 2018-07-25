@@ -133,27 +133,25 @@ docker login {YourAcrName}.azurecr.io --username {YourSerivcePrincipalName} --pa
 For this example, lets just pull the hello-world docker image which you will then push to your ACR instance.
 
 ```bash
-# pull hello-world image from docker hub
+# Pull the hello-world image from docker hub
 docker pull hello-world
 
-# tag the image for Azure Container Registry
+# Tag the image for Azure Container Registry
 docker tag hello-world {YourAcrName}.azurecr.io/hello-world
 ```
 
 ### Push the image to Azure Container Registry
 
 ```bash
-# push the docker image to Azure Container Registry
+# Push the docker image to Azure Container Registry
 docker push {YourAcrName}.azurecr.io/hello-world
 ```
 
 Finally, confirm that the hello-world image has been pushed to your ACR instace
 
 ```bash
-# list all the images in a Azure Container Registry instance
+# List all the images in a Azure Container Registry instance
 az acr repository list --name {YourAcrName}
 ```
 
-Awesome! If you got this far, you've successfully provisioned an Azure Container Registry and added a Docker image to your private repository. You are now setup to spin up container instances via ACI or Kubernetes using your own container images stored in the cloud! 
-
-If you enjoyed this post, give me a retweet on twitter!
+Awesome! If you got this far, you've successfully provisioned an Azure Container Registry and added a Docker image to your private repository. You are now setup to spin up container instances via ACI or Kubernetes using your own container images stored in the cloud!
