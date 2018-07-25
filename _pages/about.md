@@ -7,7 +7,7 @@ toc: false
 
 Hi my name is Dave, thanks for taking the time to drop by my blog.
 
-I'm a technical lead software engineer based out of Auckland, New Zealand with a passion for all things software, cloud and devops. I have over 7 years experience in the software industry, mainly working in the insurance sector.
+I'm a technical lead software engineer based out of Auckland, New Zealand with a passion for all things software, cloud and DevOps. I have over 7 years experience in the software industry, mainly working in the insurance sector.
 
 Over the last year and I bit, I've been on a learning journey developing applications that scale in the cloud predominatly targeting the Azure platform.
 
