@@ -1,9 +1,12 @@
 ---
-layout: post
-title: "Deploy and configure an Azure Container Registry"
+title: "Deploy and configure Azure Container Registry"
 excerpt: "Learn how to deploy and configure an Azure Container Registry"
-tags: [Azure Container Registry, Docker, Containers, Azure]
-share: true
+tags: 
+    - Azure Container Registry
+    - Docker
+    - Containers
+    - Azure
+last_modified_at: 2018-07-25T21:00:00-00:00
 ---
 
 ## What you will learn
