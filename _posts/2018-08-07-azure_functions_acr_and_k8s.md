@@ -157,7 +157,7 @@ Lets switch it up and work from the Azure Cloud Shell from here.
 
 [![Launch Cloud Shell](https://shell.azure.com/images/launchcloudshell.png "Launch Cloud Shell")](https://shell.azure.com)
 
->You can still follow along from your local machine provided you have the [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) installed.
+>You can still follow along from your local machine provided you have [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) installed.
 
 Kuberenetes has the concept of contexts which allows you to switch between different Kubernetes clusters. Configure `kubectl` to connect to your Kubernetes cluster
 
@@ -175,12 +175,25 @@ kubectl config current-context
 
 ### Step 2 - Configure AKS to pull images from ACR
 
-The next step is to configure Kubernetes to pull images from your prive Azure Container Registry. Kubernetes will, by default, try and pull images stored locally or from Docker Hub. To pull images from ACR you need to create an [imagePullSecret](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets) object. This will allow Kubernetes to pull images on behalf of your ACR service principal.
-
+The next step is to configure Kubernetes to pull images from your prive Azure Container Registry. Kubernetes will, by default, try and pull images stored locally or from Docker Hub. To pull images from ACR you need to give your AKS service principle the `reader` role to your ACR instance.
 See the [AKS and ACR Microsoft Docs](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks) for more detailed information.
 
-```bash
-kubectl create secret docker-registry acr-auth --docker-server <acr-login-server> --docker-username <service-principal-ID> --docker-password <service-principal-password> --docker-email <email-address>
-```
+> The script below is adapted from the [Microsoft docs]((https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks))
 
-![AKS ACR Auth](../media/2018-08-07/kubectl_acr_auth.png)
+```bash
+#!/bin/bash
+
+AKS_RESOURCE_GROUP=<your-aks-resource-group>
+AKS_CLUSTER_NAME=<your-aks-cluster-name>
+ACR_RESOURCE_GROUP=<your-acr-resource-group>
+ACR_NAME=<your-acr-instance-name>
+
+# Get the id of the service principal configured for AKS
+CLIENT_ID=$(az aks show --resource-group $AKS_RESOURCE_GROUP --name $AKS_CLUSTER_NAME --query "servicePrincipalProfile.clientId" --output tsv)
+
+# Get the ACR registry resource id
+ACR_ID=$(az acr show --name $ACR_NAME --resource-group $ACR_RESOURCE_GROUP --query "id" --output tsv)
+
+# Create role assignment
+az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
+```
