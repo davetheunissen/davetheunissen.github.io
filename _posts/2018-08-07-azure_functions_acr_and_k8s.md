@@ -131,7 +131,22 @@ Now open up `localhost` in your browser and you should see something similar whi
 
 Now that we have a working Azure Function and a tagged Docker image, you are ready to push your image to your Azure Container Registry.
 
+Refer back to [Part 2](https://davetheunissen.io/azure_container_registry/) of my ACR post if you've forgotten your username or password.
+
 ```docker
 # Login to ACR from Docker
 docker login {YourAcrName}.azurecr.io --username {YourSerivcePrincipalName} --password {YourServicePrincipalPassword}
 ```
+
+![Docker Login](../media/2018-08-07/docker_login.png)
+
+Finally push the image to your ACR instance
+
+```bash
+# Push the docker image to Azure Container Registry
+docker push {YourAcrName}.azurecr.io/my-aks-fnc-img
+```
+
+![Docker ACR Push](../media/2018-08-07/docker_acr_push.png)
+
+## Part 3 - Run your Azure Function in Kubernetes
