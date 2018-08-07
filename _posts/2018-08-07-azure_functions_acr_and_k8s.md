@@ -33,7 +33,7 @@ Run the following and select `dotnet` as the runtime.
 func init MyAksFuncApp --docker --no-source-control
 ```
 
-![New Azure Function App with Docker](../media/2018-07-22/func_init_docker.gif)
+![New Azure Function App with Docker](../media/2018-08-07/func_init_docker.gif)
 
 Inspect the project thats been created and notice the Dockerfile which should look similar to this
 
@@ -59,7 +59,7 @@ Run the following command and then choose `HttpTrigger` from the list of options
 func new --name MyAksFunc
 ```
 
-![New Azure Function](../media/2018-07-22/func_new_func.gif)
+![New Azure Function](../media/2018-08-07/func_new_func.gif)
 
 Inspect the files that have been created. You will see a .cs file with your functions name. The function that has been created is a simple http triggered function that takes a name as a query string and returns that text in a response. Checkout the [Azure Functions Docs](https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions#bindings) for more information on function triggers and bindings.
 
@@ -67,7 +67,7 @@ Inspect the files that have been created. You will see a .cs file with your func
 
 Before building your function, for the purpose of this post, we are going to set the functions authorization level to anonymous. This will allow you to invoke your function later on without requiring a function key. For more info, checkout the [authentication keys section](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook#authorization-keys) in the Azure Function Docs.
 
-![Azure Function AuthLevel](../media/2018-07-22/func_auth_level.png)
+![Azure Function AuthLevel](../media/2018-08-07/func_auth_level.png)
 
 To build and execute your function run the following.
 
@@ -76,11 +76,11 @@ To build and execute your function run the following.
 func start --build
 ```
 
-![Azure Function Start](../media/2018-07-22/func_start.gif)
+![Azure Function Start](../media/2018-08-07/func_start.gif)
 
 Open the function url in your browser. Add a query string parameter for your name and send the request. You should see a response similar to below.
 
-![Azure Function Browser Test](../media/2018-07-22/func_run_chrome.png)
+![Azure Function Browser Test](../media/2018-08-07/func_run_chrome.png)
 
 ## Part 2 - Build and run your Azure Function in a Docker Container
 
@@ -110,7 +110,7 @@ To build your docker image run the following. **(Don't miss the period at the en
 docker build -t {YourAcrName}.azurecr.io/my-aks-fnc-img .
 ```
 
-![Docker Build](../media/2018-07-22/docker_build.gif)
+![Docker Build](../media/2018-08-07/docker_build.gif)
 
 ### Step 3 - Run your Docker image locally
 
@@ -123,7 +123,7 @@ docker run --rm -p 80:80 dtcntrreg.azurecr.io/my-aks-fnc-img:latest
 
 Now open up `localhost` in your browser and you should see something similar which indicates that your function host is running. Notice that your function is running on port 80 as per the command above. You can also add `/api/MyAksFunc` to test your function just like before.
 
-![Docker Function Host](../media/2018-07-22/func_host_run.png)
+![Docker Function Host](../media/2018-08-07/func_host_run.png)
 
 >This is an awesome milestone! You now have an Azure Function running inside a Docker container on your local machine!
 
