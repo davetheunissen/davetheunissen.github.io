@@ -47,14 +47,14 @@ COPY . /home/site/wwwroot
 
 Make sure to change directory to the `MyAksFuncApp` folder that you created in the previous step.
 
-```bash
+```function-core-tools
 # Change working directory
 cd .\MyAksFuncApp\
 ```
 
 Run the following command and then choose `HttpTrigger` from the list of options.
 
-```bash
+```function-core-tools
 # Create a new Azure Function
 func new --name MyAksFunc
 ```
@@ -71,7 +71,7 @@ Before building your function, for the purpose of this post, we are going to set
 
 To build and execute your function run the following.
 
-```bash
+```function-core-tools
 # Build and run the Azure Function
 func start --build
 ```
@@ -90,7 +90,7 @@ There is a known issue with compiled functions at the moment that require the `-
 
 Copy the pre generated Dockerfile from the root directory to `./bin/output` and then change your working directory to this location
 
-```bash
+```cmd
 # Copy the Dockerfile to the target directory
 cp Dockerfile .\bin\output\
 # Change working directory
@@ -107,7 +107,7 @@ To build your docker image run the following. **(Don't miss the period at the en
 
 ```docker
 # Build a docker image with a tag
-docker build -t {YourAcrName}.azurecr.io/my-aks-fnc-img .
+docker build -t <acr-name>.azurecr.io/my-aks-fnc-img .
 ```
 
 ![Docker Build](../media/2018-08-07/docker_build.gif)
@@ -135,7 +135,7 @@ Refer back to [Part 2](https://davetheunissen.io/azure_container_registry/) of m
 
 ```docker
 # Login to ACR from Docker
-docker login {YourAcrName}.azurecr.io --username {YourSerivcePrincipalName} --password {YourServicePrincipalPassword}
+docker login {YourAcrName}.azurecr.io --username <acr-service-principal-name> --password <acr-service-principal-password>
 ```
 
 ![Docker Login](../media/2018-08-07/docker_login.png)
@@ -150,3 +150,37 @@ docker push {YourAcrName}.azurecr.io/my-aks-fnc-img
 ![Docker ACR Push](../media/2018-08-07/docker_acr_push.png)
 
 ## Part 3 - Run your Azure Function in Kubernetes
+
+### Step 1 - Connect to your Azure Kubernetes Service
+
+Lets switch it up and work from the Azure Cloud Shell from here.
+
+[![Launch Cloud Shell](https://shell.azure.com/images/launchcloudshell.png "Launch Cloud Shell")](https://shell.azure.com)
+
+>You can still follow along from your local machine provided you have the [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) installed.
+
+Kuberenetes has the concept of contexts which allows you to switch between different Kubernetes clusters. Configure `kubectl` to connect to your Kubernetes cluster
+
+```azure-cli
+az aks get-credentials --resource-group <your-aks-resource-group> --name <your-aks-resource-name>
+```
+
+![AKS Context](../media/2018-08-07/kubectl_context.png)
+
+To check `Kubectl` is set to the correct context run
+
+```azure-cli
+kubectl config current-context
+```
+
+### Step 2 - Configure AKS to pull images from ACR
+
+The next step is to configure Kubernetes to pull images from your prive Azure Container Registry. Kubernetes will, by default, try and pull images stored locally or from Docker Hub. To pull images from ACR you need to create an [imagePullSecret](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets) object. This will allow Kubernetes to pull images on behalf of your ACR service principal.
+
+See the [AKS and ACR Microsoft Docs](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks) for more detailed information.
+
+```azure-cli
+kubectl create secret docker-registry acr-auth --docker-server <acr-login-server> --docker-username <service-principal-ID> --docker-password <service-principal-password> --docker-email <email-address>
+```
+
+![AKS ACR Auth](../media/2018-08-07/kubectl_acr_auth.png)
