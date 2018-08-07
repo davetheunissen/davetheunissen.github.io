@@ -161,7 +161,7 @@ Lets switch it up and work from the Azure Cloud Shell from here.
 
 Kuberenetes has the concept of contexts which allows you to switch between different Kubernetes clusters. Configure `kubectl` to connect to your Kubernetes cluster
 
-```azure-cli
+```bash
 az aks get-credentials --resource-group <your-aks-resource-group> --name <your-aks-resource-name>
 ```
 
@@ -169,7 +169,7 @@ az aks get-credentials --resource-group <your-aks-resource-group> --name <your-a
 
 To check `Kubectl` is set to the correct context run
 
-```azure-cli
+```bash
 kubectl config current-context
 ```
 
@@ -179,7 +179,7 @@ The next step is to configure Kubernetes to pull images from your prive Azure Co
 
 See the [AKS and ACR Microsoft Docs](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks) for more detailed information.
 
-```azure-cli
+```bash
 kubectl create secret docker-registry acr-auth --docker-server <acr-login-server> --docker-username <service-principal-ID> --docker-password <service-principal-password> --docker-email <email-address>
 ```
 
