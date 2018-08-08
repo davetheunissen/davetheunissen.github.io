@@ -1,6 +1,6 @@
 ---
 title: "Azure Functions v2 with Kubernetes"
-excerpt: "Learn how to publish an azure function docker image to Azure Container Registry and then deploy to a Kubernetes cluster"
+excerpt: "Learn how to publish an Azure Function Docker image to Azure Container Registry and then deploy to a Azure Kubernetes Service"
 tags: [kubernetes, docker, containers, functions, azure]
 share: true
 ---
