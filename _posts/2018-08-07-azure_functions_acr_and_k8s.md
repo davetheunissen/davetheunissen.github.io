@@ -16,7 +16,7 @@ In this post you will learn how to deploy and run a simple .Net Core [Azure Func
 - [Docker](https://www.docker.com/community-edition)
 - [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools)
 - [Azure Container Registry](https://azure.microsoft.com/en-us/services/container-registry/) - You could use Docker Hub but that's not covered here. If you are not familiar with Azure Container Registries, have a look at [my previous post.](https://davetheunissen.io/azure_container_registry/)
-- [Azure Kubernetes Service](https://azure.microsoft.com/en-us/services/kubernetes-service/) - You could use any Kubernetes instance. If you've never provisioned an Azure Kubernetes Service before, take a look at [this awesome AKS and Graphana workshop](https://github.com/PlagueHO/Workshop-AKS) put together by Microsoft MVP [@dscottraynsford](https://twitter.com/dscottraynsford)
+- [Azure Kubernetes Service](https://azure.microsoft.com/en-us/services/kubernetes-service/) - You could use any Kubernetes instance. If you've never provisioned an Azure Kubernetes Service before, take a look at [this great AKS and Graphana workshop](https://github.com/PlagueHO/Workshop-AKS) put together by Microsoft MVP [@dscottraynsford](https://twitter.com/dscottraynsford)
 
 ## Part 1 - Create and Run an Azure Function
 
