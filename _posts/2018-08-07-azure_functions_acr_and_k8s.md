@@ -47,14 +47,14 @@ COPY . /home/site/wwwroot
 
 Make sure to change directory to the `MyAksFuncApp` folder that you created in the previous step.
 
-```function-core-tools
+```bash
 # Change working directory
 cd .\MyAksFuncApp\
 ```
 
 Run the following command and then choose `HttpTrigger` from the list of options.
 
-```function-core-tools
+```bash
 # Create a new Azure Function
 func new --name MyAksFunc
 ```
@@ -71,7 +71,7 @@ Before building your function, for the purpose of this post, we are going to set
 
 To build and execute your function run the following.
 
-```function-core-tools
+```bash
 # Build and run the Azure Function
 func start --build
 ```
@@ -90,7 +90,7 @@ There is a known issue with compiled functions at the moment that require the `-
 
 Copy the pre generated Dockerfile from the root directory to `./bin/output` and then change your working directory to this location
 
-```cmd
+```bash
 # Copy the Dockerfile to the target directory
 cp Dockerfile .\bin\output\
 # Change working directory
