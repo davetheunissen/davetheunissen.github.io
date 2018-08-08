@@ -175,10 +175,10 @@ kubectl config current-context
 
 ### Step 2 - Configure AKS to pull images from ACR
 
-The next step is to configure Kubernetes to pull images from your prive Azure Container Registry. Kubernetes will, by default, try and pull images stored locally or from Docker Hub. To pull images from ACR you need to give your AKS service principle the `reader` role to your ACR instance.
+The next step is to configure Kubernetes to pull images from your prive Azure Container Registry. Kubernetes will, by default, try and pull images stored locally or from Docker Hub. To pull images from ACR you need to give your AKS service principal the `reader` role to your ACR instance.
 See the [AKS and ACR Microsoft Docs](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks) for more detailed information.
 
-> The script below is adapted from the [Microsoft docs]((https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks))
+> The script below is adapted from the [AKS and ACR Microsoft Docs]((https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks))
 
 ```bash
 #!/bin/bash
@@ -197,3 +197,44 @@ ACR_ID=$(az acr show --name $ACR_NAME --resource-group $ACR_RESOURCE_GROUP --que
 # Create role assignment
 az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 ```
+
+### Step 3 - Setup a LoadBalancer service to allow external traffic to your container
+
+Run the following script to create a new Kubernetes deployment with your Azure Function Docker image.
+
+```bash
+kubectl run dt-aks-fnc-app --image=dtcntrreg.azurecr.io/my-aks-fnc-img --port=80
+```
+
+![Kubectl Deploy](../media/2018-08-07/kubectl_deploy.png)
+
+Now lets check the status of the pod thats been created as part of your deployment.
+
+```bash
+kubectl get pods
+```
+
+![Kubectl Pods](../media/2018-08-07/kubectl_pods.png)
+
+Finally, lets exopse the Kubernetes container running your Azure Function with a load balancer. Another good option would be to create an ingress but thats possibly for another post. Have a look at [this post](https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0) for more info about the different options for getting external traffic to your k8s services.
+
+```bash
+kubectl expose deployment dt-aks-fnc-app --type=LoadBalancer
+```
+
+> Notice I ran the below command a couple times as it took a few moments for my load balancer service to expose an external ip addres.
+
+```bash
+kubectl get svc
+```
+
+![Kubectl Expose](../media/2018-08-07/kubectl_expose.png)
+
+### Step 4 - Test your Azure Function running in Kubernetes
+
+Notice the external ip address provided by the LoadBalancer service. Thats the address you will be able to trigger your function from. Go ahead and put this into your browser, you should see the Azure Functions Runtime page. Add `/api/MyAksFunc?name=dave` to hit your functions endpoint.
+
+![K8s Function Runtime](../media/2018-08-07/k8s_func_runtime.png)
+![K8s Function](../media/2018-08-07/k8s_func.png)
+
+Awesome job if you got this far! You now have an Azure Function that you created from scratch, built into a Docker image, deployed to Azure Container Registry and running in a Azure Kubernetes Service.
