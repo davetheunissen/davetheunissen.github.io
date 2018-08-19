@@ -4,3 +4,5 @@ Date | Activity | Ref
 2018-07-18  | Cloud & Infra meetup |
 2018-07-25  | ACR & Docker post | https://davetheunissen.io/azure_container_registry/
 2018-08-07  | Azure Functions & AKS | https://davetheunissen.io/azure_functions_acr_and_k8s/
+2018-08-15  | PR Review PS DSC | https://github.com/PowerShell/DscResource.Tests/pull/285 
+2018-08-17  | PR Review PS DSC | https://github.com/PowerShell/DscResource.Tests/pull/271
