@@ -1,8 +1,12 @@
 Date | Activity | Ref
 --- | --- | ---
+2018-06- 28 | Pluralsight - Cloud Patterns and Architecture for Microsoft Azure Developers | https://app.pluralsight.com/library/courses/microsoft-azure-cloud-patterns-architecture
 2018-07-14  | Azure Dev Spaces Docs PR | https://github.com/MicrosoftDocs/azure-docs/pull/11723 
-2018-07-18  | Cloud & Infra meetup |
+2018-07-18  | Azure Cloud & Infra meetup |
+2018-07-18  | Pluralsight - Getting Started with Kubernetes | https://app.pluralsight.com/library/courses/getting-started-kubernetes
 2018-07-25  | ACR & Docker post | https://davetheunissen.io/azure_container_registry/
 2018-08-07  | Azure Functions & AKS | https://davetheunissen.io/azure_functions_acr_and_k8s/
 2018-08-15  | PR Review PS DSC | https://github.com/PowerShell/DscResource.Tests/pull/285 
 2018-08-17  | PR Review PS DSC | https://github.com/PowerShell/DscResource.Tests/pull/271
+2018-08-29  | Azure Lunchtime Meetup |
+2018-08-30  | Pluralsight - Azure Durable Functions Fundamentals | https://app.pluralsight.com/library/courses/azure-durable-functions-fundamentals
