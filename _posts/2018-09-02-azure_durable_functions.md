@@ -27,13 +27,13 @@ Some things to know
 
 - Orchestrator function code must be deterministic.
 - Local state is persisted whenever the function awaits.
+- Orchestrators should not perform any I/O operations.
 - You can find out more information about [Performance and scaling of Durable Functions](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-perf-and-scale) over on the Microsoft Docs.
 
 ## What you will need
 
 - [Visual Studio 2017 Community Edition](https://visualstudio.microsoft.com/vs/community/)
 - [Visual Studio Extension - Azure Functions & Web Jobs Tools](https://marketplace.visualstudio.com/items?itemName=VisualStudioWebandAzureTools.AzureFunctionsandWebJobsTools)
-- [Azure Storage Explorer (Optional)](https://azure.microsoft.com/en-us/features/storage-explorer/)
 
 ## Part 1 - Create a new Durable Function Project
 
@@ -90,6 +90,8 @@ The 2nd key thing to notice is that the Orchestrator Client returns a `CheckStat
 - TerminatePostUri - Terminate an instance of a running orchestration.
 - RewindPostUri - Rewind a running orchestration instance to a replay events from a previous checkpoint.
 
+In this example the Orchestrator Client is an HttpTrigger. It's important to note that the `OrchestratorClient` can be triggered by any of the supported Azure Function Triggers e.g. TimerTrigger, QueueTrigger, CosmosDbTrigger etc. See [here](https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings#supported-bindings) for more info on function bindings and triggers.
+
 ### Durable Orchestration Function
 
 ```csharp
@@ -137,3 +139,25 @@ public static string SayHello(
     return $"Hello {name}!";
 }
 ```
+
+The Activity Function is the equivalent of a regular Azure Function with the difference being that it is invoked by a durable orchestrator. It performs some logic in a stateless way and returns a response to it's parent orchestration function. You will notice that this function is decorated with an `ActivityTrigger` attribute.
+
+## Part 3 - Trigger a Durable Function
+
+Finally start up your Function App and call the endpoint of your locally hosted Orchestrator Client in your browser or via PostMan. It should be similar to `http://localhost:7071/api/OrchestratorFunction_HttpStart`
+
+![Run Azure Durable Function](../media/2018-09-02/run-azdf.png)
+
+Once you make a request to this endpoint, you will get back a list of URLs as described above.
+
+![Status Azure Durable Function](../media/2018-09-02/status-azdf.png)
+
+Navigate to the `statusQueryGetUri` and observe the status of your new durable function instance.
+
+![Status Get Azure Durable Function](../media/2018-09-02/status-get-azdf.png)
+
+As you can see from the runtimeStatus, this orchestration invocation has completed and the output is the names of the cities returned by each of my activity functions.
+
+This has been a brief introduction into the Durable Functions extension and hopefully lowers a few barriers for having a go at creating your own. In a future post I'd like to explore how Durable Functions maintain state through the use of queues and table storage but for now this should be enough to get you up and running.
+
+All of the code for this extension is open source and can be found over on the [Azure Functions Durable Extension GitHub Repo](https://github.com/Azure/azure-functions-durable-extension)
