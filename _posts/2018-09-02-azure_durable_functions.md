@@ -61,7 +61,7 @@ Create an empty function app and select the storage emulator for the storage acc
 
 ## Part 2 - Review the Code
 
-Let's take a look at the code that has been scoffolded out by the Visual Studio Templates.
+Let's take a look at the code that has been scaffolded out by the Visual Studio Templates.
 
 ### Orchestrator Client Function
 
@@ -115,7 +115,7 @@ The Durable Orchestration Function is the conductor and is responsible for coord
 
 As mentioned above, orchestrator functions checkpoint their progress after each await. The above code therefore executes each Activity function in series, only progressing to the next function after the current invoked function returns. If you wanted to execute all of the above Activity functions in parallel, you would create a list of Task objects that represent the asynchronous operations and then call `Task.WhenAll(List<Task<string>)`
 
-The below example shows how to queue up parallel activity invocations.
+The below example shows how to queue up parallel activity invocations;
 
 ```csharp
 var parallelActivities = new List<Task<string>>
@@ -148,7 +148,7 @@ Finally start up your Function App and call the endpoint of your locally hosted 
 
 ![Run Azure Durable Function](../media/2018-09-02/run-azdf.png)
 
-Once you make a request to this endpoint, you will get back a list of URLs as described above.
+Once you make a request to this endpoint, you will get back a list of URLs as described earlier in this post.
 
 ![Status Azure Durable Function](../media/2018-09-02/status-azdf.png)
 
