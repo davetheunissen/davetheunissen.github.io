@@ -90,7 +90,7 @@ The 2nd key thing to notice is that the Orchestrator Client returns a `CheckStat
 - TerminatePostUri - Terminate an instance of a running orchestration.
 - RewindPostUri - Rewind a running orchestration instance to a replay events from a previous checkpoint.
 
-### The Orchestration Function
+### Durable Orchestration Function
 
 ```csharp
 [FunctionName("OrchestratorFunction")]
@@ -109,7 +109,23 @@ public static async Task<List<string>> RunOrchestrator(
 }
 ```
 
-### The Activity Function
+The Durable Orchestration Function is the conductor and is responsible for coordinating requests to activity functions. You will notice that the function is decorated with a `OrchestrationTrigger` attribute which exposes the `DurableOrchestrationContext` This context is what is used to invoke and interact with Activity functions.
+
+As mentioned above, orchestrator functions checkpoint their progress after each await. The above code therefore executes each Activity function in series, only progressing to the next function after the current invoked function returns. If you wanted to execute all of the above Activity functions in parallel, you would create a list of Task objects that represent the asynchronous operations and then call `Task.WhenAll(List<Task<string>)`
+
+The below example shows how to queue up parallel activity invocations.
+
+```csharp
+var parallelActivities = new List<Task<string>>
+{
+    context.CallActivityAsync<string>("OrchestratorFunction_Hello", "Tokyo"),
+    context.CallActivityAsync<string>("OrchestratorFunction_Hello", "Seattle"),
+    context.CallActivityAsync<string>("OrchestratorFunction_Hello", "London")
+};
+await Task.WhenAll(parallelActivities);
+```
+
+### Activity Function
 
 ```csharp
 [FunctionName("OrchestratorFunction_Hello")]
