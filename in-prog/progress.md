@@ -1,6 +1,6 @@
 Date | Activity | Ref
 --- | --- | ---
-2018-06-28 | Pluralsight - Cloud Patterns and Architecture for Microsoft Azure Developers | https://app.pluralsight.com/library/courses/microsoft-azure-cloud-patterns-architecture
+2018-06-28  | Pluralsight - Cloud Patterns and Architecture for Microsoft Azure Developers | https://app.pluralsight.com/library/courses/microsoft-azure-cloud-patterns-architecture
 2018-07-14  | Azure Dev Spaces Docs PR | https://github.com/MicrosoftDocs/azure-docs/pull/11723 
 2018-07-18  | Azure Cloud & Infra meetup |
 2018-07-18  | Pluralsight - Getting Started with Kubernetes | https://app.pluralsight.com/library/courses/getting-started-kubernetes
