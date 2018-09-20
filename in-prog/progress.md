@@ -11,3 +11,4 @@ Date | Activity | Ref
 2018-08-29  | Azure Lunchtime Meetup |
 2018-08-30  | Pluralsight - Azure Durable Functions Fundamentals | https://app.pluralsight.com/library/courses/azure-durable-functions-fundamentals
 2018-09-03  | Blog: Azure Durable Functions - Getting Started | https://davetheunissen.io/azure_durable_functions/
+2018-09-20  | Pluralsight - Terraform Deep Dive | https://app.pluralsight.com/library/courses/deep-dive-terraform/table-of-contents
