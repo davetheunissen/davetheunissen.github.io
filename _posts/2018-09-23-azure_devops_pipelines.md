@@ -155,7 +155,7 @@ Give your release stage a meaningful name. In this case I've named mine `Develop
 
 ![Azure Pipeline Release Stage Dev](../media/2018-09-23/azdo-deploy-dev.png)
 
-#### Add Deployment Artifacts
+### Add Deployment Artifacts
 
 ![Azure Pipeline Release Artefacts](../media/2018-09-23/azdo-deploy-art.png)
 
@@ -167,7 +167,7 @@ That's it, you now have the artefacts configured for your release. Don't forget 
 
 ***
 
-#### Configure the Deployment Stage
+### Configure the Deployment Stage
 
 Notice the little red icon indicating that we've got some work to do to get this stage correctly configured. Click on the **1job, 1 task** hyperlink to open the stage configuration panel.
 
@@ -204,7 +204,7 @@ If everything is correctly configured, you should have a green deployment and yo
 
 ![Azure Pipeline Release Prog](../media/2018-09-23/azdo-release-prog.gif)
 
-#### Add a Deployment Status Badge
+### Add a Deployment Status Badge
 
 If you are after a sweet release badge as well, head over to the options tab on your release definition, look for the integrations section and enable the deployment status badge. Copy the link and drop it into the README on your repo.
 
@@ -214,7 +214,7 @@ If you are after a sweet release badge as well, head over to the options tab on 
 
 ***
 
-#### Test Your Function App in Azure
+### Test Your Function App in Azure
 
 Now that your Function app has been deployed to Azure, jump into the Azure Portal and open up the Functions blade.
 
@@ -225,8 +225,6 @@ Grab the URL for your newly deployed Function App which will include the Functio
 ![Azure Function App Url](../media/2018-09-23/az-fnapp-url.png)
 
 ![Azure Function App Test](../media/2018-09-23/az-fnapp-test.png)
-
-***
 
 ## Wrapping up
 
