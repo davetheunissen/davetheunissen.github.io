@@ -14,3 +14,5 @@ Date | Activity | Ref
 2018-09-20  | Pluralsight - Terraform Deep Dive | https://app.pluralsight.com/library/courses/deep-dive-terraform/table-of-contents
 2018-09-23  | Blog: Azure DevOps Pipelines - GitHub & Azure Functions | https://davetheunissen.io/azure_devops_pipelines/
 2018-09-26  | PR - Azure DevOps Docs PR | https://github.com/MicrosoftDocs/vsts-docs/pull/1868
+2018-10-11  | Azure Functions V2 Presentation to IAG Development Guild
+2018-10-27  | Azure Front Door Service Presnetation to Microsoft Cloud and Infrastructure Meetup |   
