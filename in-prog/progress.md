@@ -16,4 +16,5 @@ Date | Activity | Ref
 2018-09-26  | PR - Azure DevOps Docs PR | https://github.com/MicrosoftDocs/vsts-docs/pull/1868
 2018-10-11  | Azure Functions V2 Presentation to IAG Development Guild
 2018-10-27  | Azure Front Door Service Presnetation to Microsoft Cloud and Infrastructure Meetup |   
+2018-02-01  | Enable Query Metrics in azure-cosmos-dotnet-v3 sdk | https://github.com/Azure/azure-cosmos-dotnet-v3/pull/38 |
 2019-02-20  | Azure API Management - Consumption Tier Presentation to Auckland Azure User Group |
