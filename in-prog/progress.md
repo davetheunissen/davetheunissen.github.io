@@ -18,3 +18,6 @@ Date | Activity | Ref
 2018-10-27  | Azure Front Door Service Presnetation to Microsoft Cloud and Infrastructure Meetup |   
 2018-02-01  | Enable Query Metrics in azure-cosmos-dotnet-v3 sdk | https://github.com/Azure/azure-cosmos-dotnet-v3/pull/38 |
 2019-02-20  | Azure API Management - Consumption Tier Presentation to Auckland Azure User Group |
+2019-03-27  | Challenging the Coroporate Immunesystem - DevOps in the Enterprise presentation to Auckland DevOps User  Group |
+2019-04-27  | Real Time Flight Map w/ Azure Functions, CosmosDB & SignalR presentation to Auckland Azure Global Bootcamp
+2019-04-29  | Blog: Real Time Flight Map w/ Azure Functions, CosmosDB & SignalR | https://davetheunissen.io/real-time-flight-map-w-azure-functions-cosmosdb-signalr/
