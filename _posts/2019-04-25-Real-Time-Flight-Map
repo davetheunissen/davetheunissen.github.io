@@ -1,5 +1,9 @@
-# Real Time Flight Map w/ Azure Functions, CosmosDB & SignalR
-
+---
+title: "Real Time Flight Map w/ Azure Functions, CosmosDB & SignalR"
+excerpt: "In this workshop we will be building a (near) real-time flight tracker app that leverages several Azure technologies."
+tags: [functions, signalr, cosmosdb, azure]
+share: true
+---
 ## What we will cover
 
 In this workshop we will be building a (near) real-time flight tracker app that leverages several Azure technologies.
